@@ -1,0 +1,74 @@
+---
+title: Atividade 1
+author: Alessandro Lia Fook
+date: 29 de agosto de 2018
+output: pdf_document
+---
+
+
+## Questão 01
+Foi realizada apenas a montagem da tabela de dados através do comando abaixo:
+```{r}
+dados <- read.csv(file="/home/alessandrolfs/Documentos/estat/veiculos.csv", header = TRUE)
+```
+
+## Questão 02
+
+Podemos observar uma tabela com os valores da origem abaixo:
+
+```{r}
+t_origem <- table(dados$origem)
+print(t_origem)
+d <- c(t_origem, prop.table(t_origem))
+print(d)
+```
+
+Podemos analizar os valores obtidos no gráfico de pizza abaixo:
+```{r}
+pie(table(dados$origem),main="Origem dos veículos",labels=c("41.38%","58.62%"),col=c(1,2))
+legend("topright",fill=c(1,2),legend=c("Importado","Nacional"))
+```
+
+## Questão 03
+
+Abaixo segue o histograma das variáveis relevantes para o estudo:
+```{r}
+hist(x = dados$preco,main="Histograma dos preços dos veículos", xlab = "Preço do Veículo", ylab = "Frequência")
+hist(x = dados$motor,main="Histograma da potência dos motores dos veículos", xlab = "Potência do Motor", ylab = "Frequência")
+hist(x = dados$comprimento,main="Histograma da potência dos motores dos veículos", xlab = "Comprimento do Veículo", ylab = "Frequência")
+```
+
+## Questão 04
+
+Medidas de variação do preço:
+```{r}
+var(dados$preco)
+mean(dados$preco)
+quantile(dados$preco)
+```
+
+Medidas de variação da potência do motor:
+```{r}
+var(dados$motor)
+mean(dados$motor)
+quantile(dados$motor)
+```
+
+Medidas de variação do comprimento:
+```{r}
+var(dados$comprimento)
+mean(dados$comprimento)
+quantile(dados$comprimento)
+```
+
+## Questão 05
+
+Boxplot da relação entre o preço e a origem do veículo.
+
+```{r}
+boxplot(dados$preco~dados$origem,col="blue", main="Box plot da relação entre o preço e a origem do veículo", xlab="Preço", ylab="Origem")
+```
+
+## Questão 06
+
+Conforme o boxplot acima, é de fácil percepção que os carros importados tem preços maior, contudo podemos observar que existe um valor atípico do veículo toytota perua que tem o maior preço com valor de 24632 encontrado-se muito distante dos demais veículos nacionais, sem que tenha o maior comprimento ou a maior potência do motor que são as outras duas variáveis da base de dados.

@@ -1,0 +1,30 @@
+veiculo,preco,comprimento,motor,origem
+asia tower,9440,3.36,40,I
+audi a3,38850,415,125,I
+chevrolet astra,10532,4.11,110,N
+chevrolet corsa,6176,3.73,60,N
+chevrolet tigra,12890,3.92,100,I
+chevrolet vectra,13140,4.47,110,N
+chrysler neon,31640,4.36,115,I
+dodge dakota,11630,4.96,121,N
+fiat fiorino,6700,4.16,76,N
+fiat marea,12923,4.39,127,N
+fiat uno mille,5257,3.64,57,N
+fiat palio,6260,3.73,61,N
+fiat siena,7780,4.10,61,I
+ford escort,10767,4.20,115,I
+ford fiesta,6316,3.83,52,N
+ford ka,5680,3.62,54,N
+ford mondeo,33718,4.56,130,I
+honda civic,14460,4.45,106,N
+hyundai accent,21500,4.12,91,I
+peugeot 106,13840,3.68,50,I
+renault clio,13700,3.70,74,I
+toyota corola,15520,4.39,116,N
+toyota perua,24632,4.40,96,N
+vw gol,6340,3.81,54,N
+vw golf,22200,4.15,100,I
+vw parati,9300,4.08,69,N
+vw polo,12018,4.14,99,I
+vw santana,11386,4.57,101,N
+vw saveiro,7742,4.38,88,N
