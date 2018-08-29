@@ -1,0 +1,104 @@
+---
+title: Atividade 1
+author: Alessandro Lia Fook
+date: 29 de agosto de 2018
+output: pdf_document
+---
+
+## Questão 01
+
+Foi realizada a montagem da tabela de dados e a atribuição das variáveis ao ambiente através do comando abaixo:
+
+```{r}
+dados <- read.csv(file="~/Documents/workspace/estat/atividade1/veiculos.csv", header = TRUE)
+attach(dados)
+```
+
+## Questão 02
+
+Podemos observar uma tabela com os valores absolutos e percentuais da origem:
+
+```{r}
+frame = as.data.frame(table(origem))
+frame["Percent"] <- round(as.data.frame(prop.table(table(origem)))$Freq, 4)
+show(frame)
+```
+
+Podemos analizar os valores obtidos através do gráfico de pizza abaixo:
+
+```{r}
+percent <- paste(frame$Percent * 100, "%", sep = "")
+legendas <- paste(ifelse(names(table(origem)) == "I", "Importado", "Nacional"), percent, sep=" ")
+valores <- paste(table(origem))
+pie(table(origem),main="Origem dos veículos",labels=valores,col=c(1,2))
+legend("topright",fill=c(1,2),legend=legendas)
+```
+
+## Questão 03
+
+Abaixo segue o histograma das variáveis quatitativas do estudo, sendo todas inicialmente consideradas relevantes:
+
+```{r}
+hist(x = preco,main="Histograma dos preços dos veículos", 
+     xlab = "Preço do Veículo", 
+     ylab = "Frequência")
+
+hist(x = motor,main="Histograma da potência dos motores dos veículos", 
+     xlab = "Potência do Motor", 
+     ylab = "Frequência")
+
+hist(x = comprimento,main="Histograma da potência dos motores dos veículos", 
+     xlab = "Comprimento do Veículo", 
+     ylab = "Frequência")
+```
+
+## Questão 04
+
+São consideradas medidas de posição a média, a mediana, a moda(que não tem função nativa no R). Por outro lado as medidas de variação podem ser citadas a variância, o desvio padrão e os quartis. Assim apresentamos os valores para cada medida mencionada considerando as variáveis qualitativas da base de dados:
+
+- **Preço**:
+
+```{r}
+mean(preco)
+median(preco)
+sd(preco)
+var(preco)
+quantile(preco)
+```
+
+- **Potência do motor**:
+
+```{r}
+mean(motor)
+median(motor)
+sd(motor)
+var(motor)
+quantile(motor)
+```
+
+- **Comprimento do veículo**:
+
+```{r}
+mean(comprimento)
+median(comprimento)
+sd(comprimento)
+var(comprimento)
+quantile(comprimento)
+```
+
+## Questão 05
+
+```{r}
+boxplot(preco~origem,col="gray", main="Box plot da relação entre o preço e a origem do veículo", ylab="Preço", xlab="Origem")
+```
+
+## Questão 06
+
+Conforme o boxplot acima, é de fácil percepção que os carros importados tem preços maior, contudo podemos observar que existe um valor atípico do veículo *Toytota Perua* que tem o maior preço com valor de **24632** encontrado-se muito distante dos demais veículos nacionais. Esse valor atípico não encontra qualquer respaldo nas outras variáveis presentes na base de dados, seja o comprimento ou a potência do motor, pois em nenhum dos dois casos a  *Toytota Perua* tem os maiores valores, conforme podemos observar abaixo:
+
+```{r}
+frame2 <- dados[which(dados$origem == "N"),] #Selecionando apenas os veículos nacionais
+max(frame2$comprimento)
+max(frame2$motor)
+show(frame2[which(frame2$veiculo == "toyota perua"),])
+```
