@@ -1,0 +1,49 @@
+---
+title: Atividade 2
+author: Alessandro Lia Fook
+date: 05 de setembro de 2018
+output: pdf_document
+---
+
+## Questão 01
+
+```{r}
+uniforme = c()
+
+uniforme[1] <- (15 %% 8000) / 8000
+
+for (i in 2:10000) {
+  uniforme[i] <- (uniforme[i - 1] + 5) %% 8000
+}
+
+uniforme <- uniforme / 8000
+
+hist(uniforme)
+```
+
+
+## Questão 2
+
+```{r}
+expondencial <- - log(1 - uniforme) / 10
+hist(expondencial)
+```
+
+
+## Questão 3
+
+```{r}
+poisson <- rpois(1000, 5)
+hist(poisson)
+```
+
+
+## Questão 4
+
+```{r}
+s <- numeric(1000)
+for (i in 1:1000) {
+  s[i] <- sum(rnorm(100,5,1))
+}
+hist(s)
+```
