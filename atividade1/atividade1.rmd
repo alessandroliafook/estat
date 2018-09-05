@@ -1,6 +1,6 @@
 ---
 title: Atividade 1
-author: Alessandro Lia Fook
+author: Alessandro Lia Fook Santos
 date: 29 de agosto de 2018
 output: pdf_document
 ---

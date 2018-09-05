@@ -1,13 +1,15 @@
 ---
 title: Atividade 2
-author: Alessandro Lia Fook
+author: Alessandro Lia Fook Santos
 date: 05 de setembro de 2018
 output: pdf_document
 ---
 
 ## Questão 01
 
-```{r}
+Dados que no histograma abaixo, temos os valores com variação (0,1) e gerados pela equação $X_i = (1 * X_{i - 1} + 5) \ mod \ 8000$, podemos observar a frequência de ocorrência muito próxima a igualdade em todos os valores, sendo possível aduzir que a distribuição é coerente com o modelo uniforme em questão, vejamos:
+
+```{r, fig.width=4, fig.height=4, fig.show='hold',fig.align='center'}
 uniforme = c()
 
 uniforme[1] <- (15 %% 8000) / 8000
@@ -18,32 +20,40 @@ for (i in 2:10000) {
 
 uniforme <- uniforme / 8000
 
-hist(uniforme)
+hist(uniforme, main = "Histograma da variável uniforme", 
+     xlab = "Uniforme", ylab = "Frequência")
 ```
 
 
 ## Questão 2
-
-```{r}
+A partir dos histogramas abaixo, geradas conforme código anterior, podemos auferir que os gráficos são similares, atribuíndo os valores diferentes a própria aleatoriedade de sua geração.
+```{r, out.width='.49\\linewidth', fig.width=4, fig.height=4, fig.show='hold',fig.align='center'}
 expondencial <- - log(1 - uniforme) / 10
-hist(expondencial)
+hist(expondencial, main = "Histograma da distribuição\n expondencial gerada a partir
+    da distribuição uniforme anterior", xlab = "Expondencial", ylab = "Frequência")
+
+r_expondencial <- rexp(10000, 10)
+hist(r_expondencial, main = "Histograma da distribuição\n expondencial gerada pela função
+    nativa do R", xlab = "Expondencial", ylab = "Frequência")
 ```
 
 
 ## Questão 3
 
-```{r}
+```{r, fig.width=4, fig.height=4, fig.show='hold',fig.align='center'}
 poisson <- rpois(1000, 5)
-hist(poisson)
+hist(poisson, main = "Histograma da distribuição poisson", 
+     xlab = "Poisson", ylab = "Frequência")
 ```
 
 
 ## Questão 4
 
-```{r}
-s <- numeric(1000)
+```{r, fig.width=4, fig.height=4, fig.show='hold',fig.align='center'}
+normal <- numeric(1000)
 for (i in 1:1000) {
-  s[i] <- sum(rnorm(100,5,1))
+  normal[i] <- sum(rnorm(100,5,1))
 }
-hist(s)
+hist(normal, main = "Histograma da distribuição normal", 
+     xlab = "Normal", ylab = "Frequência")
 ```
