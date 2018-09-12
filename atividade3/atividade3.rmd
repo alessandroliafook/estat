@@ -1,0 +1,80 @@
+---
+title: Atividade 3
+author: Alessandro Lia Fook
+date: 12 de setembro de 2018
+output: pdf_document
+---
+
+# Questão 1
+
+Primeiro preparamos o modelo para realizar os experimentos, incluindo uma função que irá coletar as amostras:
+```{r}
+favoravel <- rep(1, 75)
+desfavoravel <- rep(0, 25)
+populacao <- c(favoravel, desfavoravel)
+```
+
+
+## a)
+```{r}
+amostra10_med <- c()
+amostra10_var <- c()
+
+for (i in 1:1000) {
+  amostra10 <- sample(populacao, size=10, replace = TRUE)
+  amostra10_med[i] <- mean(amostra10)
+  amostra10_var[i] <- var(amostra10)
+}
+
+mean(amostra10_med)
+var(amostra10_med)
+hist(amostra10_med)
+
+mean(amostra10_var)
+var(amostra10_var)
+hist(amostra10_var)
+```
+
+## b)
+vide letra a
+
+## c) Quanto maior o tamanho da amostra mais a estatística se aproxima do parâmetro avaliado, e sua variância é reduzida, e a existência ou não de reposição não interfere no resultado, pois o tamanho da população é grande quando comparada com a amostra. 
+ 
+```{r}
+mean(populacao)
+var(populacao)
+```
+
+## d)
+Considerando que distribuição dos resultados no histograma está se aproximando de uma normal observa-se que a forma normal se torna mais uniforme a medida que se incrementa o tamanho da amostra.
+```{r}
+```
+
+# Questão 2
+No caso da distribuição de poisson temos que tanto a média quanto a variância são representados por lambda, e na distribuição abaixo foi verificado que os histogramas representam funções normais, com a média igual a lambda da distribuição original.
+```{r}
+med_am_p <- c()
+var_am_p <- c()
+for (i in 1:1000) {
+  amostra_p <- rpois(100,10)
+  med_am_p[i] <- mean(amostra_p)
+  var_am_p[i] <- var(amostra_p)
+}
+
+hist(med_am_p)
+hist(var_am_p)
+```
+
+# Questão 3
+Conforme amostragem coletada, verifica-se que a média do estimador apresentado é capaz de aproximar o valor de alpha, com uma baixa variância. 
+```{r}
+estimador_exp <- c()
+
+for (i in 1:1000) {
+  amostra_exp <- rexp(100,5)
+  estimador_exp[i] <- 1 / mean(amostra_exp)
+}
+
+mean(estimador_exp)
+var(estimador_exp)
+```
